@@ -1,0 +1,7 @@
+th,
+td {
+  padding: 10px !important;
+}
+table.mat-table {
+  width: 95vw;
+}

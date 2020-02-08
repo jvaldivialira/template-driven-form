@@ -1,0 +1,24 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" [opened]='menuOpen'>
+      <ul>
+          <li>
+              <b>
+                  Template Driven Address Book
+              </b>
+          </li>
+          <li>
+              <a routerLink='/'>Home</a>
+          </li>
+          <li>
+              <a routerLink='/contact'>Add Contact</a>
+          </li>
+      </ul>
+</mat-sidenav>
+  <mat-sidenav-content>
+      <app-top-bar></app-top-bar>
+      <div id='content'>
+          <router-outlet></router-outlet>
+      </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

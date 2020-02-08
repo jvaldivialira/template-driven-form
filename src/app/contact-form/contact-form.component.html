@@ -1,0 +1,119 @@
+<form [formGroup]="contactForm" (ngSubmit)='save()'>
+    <mat-form-field>
+        <input matInput placeholder="First Name" formControlName='firstName' [(ngModel)]='contactData.firstName'>
+        <mat-error
+            *ngIf="contactForm.controls.firstName?.errors && (contactForm.controls.firstName?.dirty || contactForm.controls.firstName?.touched)">
+            <div *ngIf="contactForm.controls.firstName?.errors.required">
+                First Name is required.
+            </div>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Last Name" formControlName='lastName' [(ngModel)]='contactData.lastName'>
+        <mat-error
+            *ngIf="contactForm.controls.lastName?.invalid && (contactForm.controls.lastName.dirty || contactForm.controls.lastName.touched)">
+            <div *ngIf="contactForm.controls.lastName.errors.required">
+                Last Name is required.
+            </div>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Address Line 1" formControlName='addressLineOne'
+            [(ngModel)]='contactData.addressLineOne'>
+        <mat-error
+            *ngIf="contactForm.controls.addressLineOne?.invalid && (contactForm.controls.addressLineOne.dirty || contactForm.controls.addressLineOne.touched)">
+            <div *ngIf="contactForm.controls.addressLineOne.errors.required">
+                Address Line 1 is required.
+            </div>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Address Line 2" formControlName='addressLineTwo'
+            [(ngModel)]='contactData.addressLineTwo'>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="City" required formControlName='city' [(ngModel)]='contactData.city'>
+        <mat-error
+            *ngIf="contactForm.controls.city?.invalid && (contactForm.controls.city.dirty || contactForm.controls.city.touched)">
+            <div *ngIf="contactForm.controls.city.errors.required">
+                City is required.
+            </div>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <mat-label>Country</mat-label>
+        <mat-select matInput formControlName='country' [(ngModel)]='contactData.country'>
+            <mat-option *ngFor="let c of countries" [value]="c.name">
+                {{c.name}}
+            </mat-option>
+        </mat-select>
+        <mat-error
+            *ngIf="contactForm.controls.country?.invalid && (contactForm.controls.country.dirty || contactForm.controls.country.touched)">
+            <div *ngIf="contactForm.controls.country.errors.required">
+                Country is required.
+            </div>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Postal Code" formControlName='postalCode' [(ngModel)]='contactData.postalCode'
+            [pattern]='getPostalCodeRegex()'>
+        <mat-error
+            *ngIf="contactForm.controls.postalCode?.invalid && (contactForm.controls.postalCode.dirty || contactForm.controls.postalCode.touched)">
+            <div *ngIf="contactForm.controls.postalCode.errors.required">
+                Postal code is required.
+            </div>
+            <div *ngIf="contactForm.controls.postalCode.invalid">
+                Postal code is invalid.
+            </div>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Phone" formControlName='phone' [(ngModel)]='contactData.phone'>
+        <mat-error
+            *ngIf="contactForm.controls.phone?.invalid && (contactForm.controls.phone.dirty || contactForm.controls.phone.touched)">
+            <div *ngIf="contactForm.controls.phone.errors.required">
+                Phone is required.
+            </div>
+            <div *ngIf="contactForm.controls.phone?.invalid">
+                Phone is invalid.
+            </div>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Age" required formControlName='age' [(ngModel)]='contactData.age'>
+        <mat-error
+            *ngIf="contactForm.controls.age?.invalid && (contactForm.controls.age.dirty || contactForm.controls.age.touched)">
+            <div *ngIf="contactForm.controls.age?.errors.required">
+                Age is required.
+            </div>
+            <div *ngIf="contactForm.controls.age?.invalid">
+                Age is invalid.
+            </div>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+        <input matInput placeholder="Email" formControlName='email' [(ngModel)]='contactData.email' email>
+        <mat-error
+            *ngIf="contactForm.controls.email?.invalid && (contactForm.controls.email.dirty || contactForm.controls.email.touched)">
+            <div *ngIf="contactForm.controls.email?.errors.required">
+                Email is required.
+            </div>
+            <div *ngIf="contactForm.controls.email?.errors?.email">
+                Email is invalid.
+            </div>
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <div mat-dialog-actions>
+        <button mat-raised-button cdkFocusInitial>Save</button>
+    </div>
+</form>
